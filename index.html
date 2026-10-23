@@ -1,0 +1,300 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Анатомия · Коллоквиум 1</title>
+<meta name="description" content="Тренажёр: остеология и артрология, 211 вопросов с несколькими верными ответами">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Golos+Text:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#f6f4ef;--card:#fffdf9;--ink:#1d1b18;--muted:#6f6a60;--line:#e4dfd4;
+  --accent:#8a2f2a;--accent-soft:#f3e3df;
+  --ok:#2f7a4a;--ok-soft:#e1f1e6;--bad:#b3362d;--bad-soft:#f8e1de;--miss:#a66a00;--miss-soft:#fbefd6;
+  --shadow:0 1px 2px rgba(0,0,0,.04),0 6px 24px rgba(0,0,0,.05);
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#151412;--card:#1e1c19;--ink:#ece8e0;--muted:#9a948a;--line:#33302b;
+  --accent:#e07a6f;--accent-soft:#3a2522;
+  --ok:#6cc58c;--ok-soft:#1d3125;--bad:#ef7d72;--bad-soft:#3a201d;--miss:#e3b25a;--miss-soft:#372c17;
+  --shadow:none;}}
+:root[data-theme="dark"]{
+  --bg:#151412;--card:#1e1c19;--ink:#ece8e0;--muted:#9a948a;--line:#33302b;
+  --accent:#e07a6f;--accent-soft:#3a2522;
+  --ok:#6cc58c;--ok-soft:#1d3125;--bad:#ef7d72;--bad-soft:#3a201d;--miss:#e3b25a;--miss-soft:#372c17;--shadow:none;}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.5 "Golos Text",system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+.wrap{max-width:760px;margin:0 auto;padding:24px 16px 80px}
+header{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:20px}
+.brand{font-weight:700;letter-spacing:-.01em;cursor:pointer}
+.brand small{display:block;font-weight:400;color:var(--muted);font-size:13px}
+.icon-btn{background:none;border:1px solid var(--line);color:var(--ink);border-radius:10px;padding:6px 10px;cursor:pointer;font:inherit;font-size:14px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:22px;box-shadow:var(--shadow)}
+h1{font-size:28px;line-height:1.15;margin:0 0 6px;letter-spacing:-.02em}
+.sub{color:var(--muted);margin:0 0 20px}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:18px 0}
+.stat{border:1px solid var(--line);border-radius:12px;padding:12px}
+.stat b{display:block;font-size:22px}
+.stat span{color:var(--muted);font-size:13px}
+.field{margin:14px 0}
+.field label.t{display:block;font-weight:600;margin-bottom:6px;font-size:14px}
+.row{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+input[type=number],input[type=search]{font:inherit;background:var(--bg);color:var(--ink);border:1px solid var(--line);border-radius:10px;padding:9px 12px;width:110px}
+input[type=search]{width:100%}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chip{border:1px solid var(--line);background:transparent;color:var(--ink);border-radius:999px;padding:6px 12px;font:inherit;font-size:14px;cursor:pointer}
+.chip.on{background:var(--accent);border-color:var(--accent);color:#fff}
+.toggle{display:flex;gap:10px;align-items:center;padding:6px 0;cursor:pointer;font-size:15px}
+.toggle input{width:18px;height:18px;accent-color:var(--accent)}
+.btn{font:inherit;font-weight:600;border:0;border-radius:12px;padding:12px 18px;cursor:pointer;background:var(--accent);color:#fff}
+.btn.ghost{background:transparent;color:var(--ink);border:1px solid var(--line)}
+.btn:disabled{opacity:.45;cursor:default}
+.actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}
+.progress{height:6px;background:var(--line);border-radius:6px;overflow:hidden;margin-bottom:16px}
+.progress i{display:block;height:100%;background:var(--accent);transition:width .25s}
+.meta{display:flex;justify-content:space-between;color:var(--muted);font-size:14px;margin-bottom:10px}
+.q{font-size:20px;font-weight:600;line-height:1.35;margin:0 0 6px}
+.hint{color:var(--muted);font-size:14px;margin-bottom:16px}
+.opts{display:flex;flex-direction:column;gap:8px}
+.opt{display:flex;gap:12px;align-items:flex-start;text-align:left;width:100%;font:inherit;color:var(--ink);background:var(--bg);border:1.5px solid var(--line);border-radius:12px;padding:12px 14px;cursor:pointer;transition:border-color .12s,background .12s}
+.opt .k{flex:none;width:24px;height:24px;border-radius:7px;border:1.5px solid var(--line);display:grid;place-items:center;font-size:12px;color:var(--muted);margin-top:1px}
+.opt.sel{border-color:var(--accent);background:var(--accent-soft)}
+.opt.sel .k{background:var(--accent);border-color:var(--accent);color:#fff}
+.opt.ok{border-color:var(--ok);background:var(--ok-soft)}
+.opt.ok .k{background:var(--ok);border-color:var(--ok);color:#fff}
+.opt.bad{border-color:var(--bad);background:var(--bad-soft)}
+.opt.bad .k{background:var(--bad);border-color:var(--bad);color:#fff}
+.opt.miss{border-color:var(--miss);border-style:dashed;background:var(--miss-soft)}
+.opt.miss .k{border-color:var(--miss);color:var(--miss)}
+.opt:disabled{cursor:default}
+.verdict{margin-top:14px;font-weight:600}
+.verdict.ok{color:var(--ok)}.verdict.bad{color:var(--bad)}
+.legend{font-size:13px;color:var(--muted);margin-top:6px}
+.big{font-size:56px;font-weight:700;letter-spacing:-.03em;line-height:1}
+.list{margin-top:18px;display:flex;flex-direction:column;gap:10px}
+.item{border:1px solid var(--line);border-radius:12px;padding:12px 14px}
+.item .n{color:var(--muted);font-size:13px}
+.item ul{margin:6px 0 0;padding-left:18px}
+.item li.c{color:var(--ok);font-weight:600}
+.kbd{font-size:12px;color:var(--muted);margin-top:14px}
+.hidden{display:none!important}
+@media (max-width:520px){h1{font-size:23px}.q{font-size:18px}.stats{grid-template-columns:repeat(3,1fr)}.stat b{font-size:18px}.big{font-size:44px}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div class="brand" id="home">Анатомия · Коллоквиум 1<small>Остеология и артрология</small></div>
+    <button class="icon-btn" id="theme" title="Тема">◐</button>
+  </header>
+
+  <!-- START -->
+  <section class="card" id="start">
+    <h1>Тренажёр к коллоквиуму</h1>
+    <p class="sub"><span id="total"></span> вопросов, в каждом может быть несколько верных ответов. Ответ засчитывается, только если выбраны все верные варианты и ни одного лишнего.</p>
+    <div class="stats">
+      <div class="stat"><b id="st-seen">0</b><span>решено</span></div>
+      <div class="stat"><b id="st-acc">—</b><span>точность</span></div>
+      <div class="stat"><b id="st-err">0</b><span>в ошибках</span></div>
+    </div>
+    <div class="field">
+      <label class="t">Блок</label>
+      <div class="chips" id="blocks"></div>
+    </div>
+    <div class="field">
+      <label class="t">Или свой диапазон</label>
+      <div class="row">с <input type="number" id="from" min="1"> по <input type="number" id="to" min="1"></div>
+    </div>
+    <div class="field">
+      <label class="toggle"><input type="checkbox" id="shuffleQ" checked> Перемешать вопросы</label>
+      <label class="toggle"><input type="checkbox" id="shuffleO"> Перемешать варианты</label>
+      <label class="toggle"><input type="checkbox" id="showCount" checked> Подсказывать число верных ответов</label>
+    </div>
+    <div class="actions">
+      <button class="btn" id="go">Начать</button>
+      <button class="btn ghost" id="goErr">Работа над ошибками</button>
+      <button class="btn ghost" id="goStudy">Все ответы</button>
+    </div>
+  </section>
+
+  <!-- QUIZ -->
+  <section class="card hidden" id="quiz">
+    <div class="progress"><i id="bar"></i></div>
+    <div class="meta"><span id="pos"></span><span id="score"></span></div>
+    <p class="q" id="qtext"></p>
+    <div class="hint" id="qhint"></div>
+    <div class="opts" id="opts"></div>
+    <div class="verdict" id="verdict"></div>
+    <div class="legend hidden" id="legend">Зелёный — верно выбран · красный — лишний · пунктир — пропущен</div>
+    <div class="actions">
+      <button class="btn" id="check" disabled>Проверить</button>
+      <button class="btn ghost" id="finish">Завершить</button>
+    </div>
+    <div class="kbd">Клавиши: 1–5 — выбрать, Enter — проверить / дальше</div>
+  </section>
+
+  <!-- RESULT -->
+  <section class="card hidden" id="result">
+    <div class="big" id="pct"></div>
+    <p class="sub" id="rsum"></p>
+    <div class="actions">
+      <button class="btn" id="again">Ещё раз</button>
+      <button class="btn ghost" id="retryWrong">Перерешать ошибки</button>
+      <button class="btn ghost" id="toStart">В начало</button>
+    </div>
+    <div class="list" id="wrongList"></div>
+  </section>
+
+  <!-- STUDY -->
+  <section class="card hidden" id="study">
+    <h1>Все вопросы с ответами</h1>
+    <div class="field"><input type="search" id="search" placeholder="Поиск по вопросам и ответам…"></div>
+    <div class="list" id="studyList"></div>
+  </section>
+</div>
+
+<script src="questions.js"></script>
+<script>
+const Q = window.QUESTIONS;
+const $ = id => document.getElementById(id);
+const L = ["А","Б","В","Г","Д","Е"];
+const store = {
+  get(k,d){try{const v=localStorage.getItem(k);return v?JSON.parse(v):d}catch(e){return d}},
+  set(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}}
+};
+let stats = store.get("anat1.stats",{});   // id -> {r:right, w:wrong}
+let errors = new Set(store.get("anat1.errors",[]));
+
+const BLOCKS = [
+  ["Все",1,Q.length],["Общие (1–15)",1,15],["Позвоночник, рёбра, грудина (16–33)",16,33],
+  ["Верхняя конечность (34–50)",34,50],["Нижняя конечность (51–70)",51,70],
+  ["Череп (71–140)",71,140],["Соединения (141–211)",141,211]
+];
+
+function shuffle(a){a=a.slice();for(let i=a.length-1;i>0;i--){const j=Math.random()*(i+1)|0;[a[i],a[j]]=[a[j],a[i]]}return a}
+function show(id){["start","quiz","result","study"].forEach(s=>$(s).classList.toggle("hidden",s!==id));window.scrollTo(0,0)}
+function plural(n,f){const a=n%10,b=n%100;return f[(a==1&&b!=11)?0:(a>=2&&a<=4&&(b<10||b>=20))?1:2]}
+
+function renderStart(){
+  $("total").textContent=Q.length;
+  const ids=Object.keys(stats); let r=0,w=0; ids.forEach(i=>{r+=stats[i].r;w+=stats[i].w});
+  $("st-seen").textContent=ids.length+" / "+Q.length;
+  $("st-acc").textContent=(r+w)?Math.round(r/(r+w)*100)+"%":"—";
+  $("st-err").textContent=errors.size;
+  $("goErr").disabled=!errors.size;
+  show("start");
+}
+const bl=$("blocks");
+BLOCKS.forEach(([name,a,b],i)=>{
+  const c=document.createElement("button");c.className="chip"+(i==0?" on":"");c.textContent=name;
+  c.onclick=()=>{[...bl.children].forEach(x=>x.classList.remove("on"));c.classList.add("on");$("from").value=a;$("to").value=b};
+  bl.appendChild(c);
+});
+$("from").value=1;$("to").value=Q.length;
+["from","to"].forEach(id=>$(id).oninput=()=>[...bl.children].forEach(x=>x.classList.remove("on")));
+
+// quiz state
+let run=null;
+function start(ids){
+  if(!ids.length)return;
+  const order=$("shuffleQ").checked?shuffle(ids):ids;
+  run={ids:order,i:0,right:0,wrong:[],answered:0};
+  show("quiz");renderQ();
+}
+function renderQ(){
+  const id=run.ids[run.i],q=Q[id];
+  run.sel=new Set();run.checked=false;
+  run.perm=$("shuffleO").checked?shuffle(q.o.map((_,i)=>i)):q.o.map((_,i)=>i);
+  $("bar").style.width=(run.i/run.ids.length*100)+"%";
+  $("pos").textContent=`Вопрос ${run.i+1} из ${run.ids.length} · №${id+1}`;
+  $("score").textContent=run.answered?`верно ${run.right} из ${run.answered}`:"";
+  $("qtext").textContent=q.q;
+  const n=q.a.length;
+  $("qhint").textContent=$("showCount").checked?`Верных ответов: ${n}`:"Выберите все верные ответы";
+  const box=$("opts");box.innerHTML="";
+  run.perm.forEach((oi,k)=>{
+    const b=document.createElement("button");b.className="opt";b.dataset.oi=oi;
+    b.innerHTML=`<span class="k">${k+1}</span><span></span>`;b.lastChild.textContent=q.o[oi];
+    b.onclick=()=>toggle(oi);box.appendChild(b);
+  });
+  $("verdict").textContent="";$("verdict").className="verdict";$("legend").classList.add("hidden");
+  $("check").textContent="Проверить";$("check").disabled=true;
+}
+function toggle(oi){
+  if(run.checked)return;
+  run.sel.has(oi)?run.sel.delete(oi):run.sel.add(oi);
+  [...$("opts").children].forEach(b=>b.classList.toggle("sel",run.sel.has(+b.dataset.oi)));
+  $("check").disabled=!run.sel.size;
+}
+function check(){
+  const id=run.ids[run.i],q=Q[id],ans=new Set(q.a);
+  run.checked=true;
+  const ok=ans.size===run.sel.size&&[...ans].every(x=>run.sel.has(x));
+  [...$("opts").children].forEach(b=>{
+    const oi=+b.dataset.oi;b.classList.remove("sel");b.disabled=true;
+    if(ans.has(oi)&&run.sel.has(oi))b.classList.add("ok");
+    else if(run.sel.has(oi))b.classList.add("bad");
+    else if(ans.has(oi))b.classList.add("miss");
+  });
+  const s=stats[id]||{r:0,w:0};
+  run.answered++;
+  if(ok){run.right++;s.r++;errors.delete(id);$("verdict").textContent="Верно";$("verdict").className="verdict ok"}
+  else{run.wrong.push(id);s.w++;errors.add(id);$("verdict").textContent="Неверно";$("verdict").className="verdict bad";$("legend").classList.remove("hidden")}
+  stats[id]=s;store.set("anat1.stats",stats);store.set("anat1.errors",[...errors]);
+  $("score").textContent=`верно ${run.right} из ${run.answered}`;
+  $("check").textContent=run.i+1<run.ids.length?"Дальше →":"Результат";$("check").disabled=false;$("check").focus();
+}
+function next(){run.i++;run.i<run.ids.length?renderQ():finish()}
+function finish(){
+  if(!run.answered){renderStart();return}
+  const p=Math.round(run.right/run.answered*100);
+  $("pct").textContent=p+"%";
+  $("rsum").textContent=`Верно ${run.right} из ${run.answered} ${plural(run.answered,["вопроса","вопросов","вопросов"])}.`+(run.wrong.length?" Ниже — разбор ошибок.":" Без ошибок!");
+  $("retryWrong").disabled=!run.wrong.length;
+  $("wrongList").innerHTML="";run.wrong.forEach(id=>$("wrongList").appendChild(item(id)));
+  show("result");
+}
+function item(id){
+  const q=Q[id],d=document.createElement("div");d.className="item";
+  d.innerHTML=`<div class="n">№${id+1}</div><b></b><ul></ul>`;d.querySelector("b").textContent=q.q;
+  q.o.forEach((o,i)=>{const li=document.createElement("li");li.textContent=o;if(q.a.includes(i))li.className="c";d.querySelector("ul").appendChild(li)});
+  return d;
+}
+
+$("check").onclick=()=>run.checked?next():check();
+$("finish").onclick=finish;
+$("go").onclick=()=>{
+  let a=Math.max(1,+$("from").value||1),b=Math.min(Q.length,+$("to").value||Q.length);if(a>b)[a,b]=[b,a];
+  start([...Array(b-a+1)].map((_,i)=>a-1+i));
+};
+$("goErr").onclick=()=>start([...errors].sort((x,y)=>x-y));
+$("again").onclick=()=>start(run.ids.slice());
+$("retryWrong").onclick=()=>start(run.wrong.slice());
+$("toStart").onclick=renderStart;
+$("home").onclick=renderStart;
+$("goStudy").onclick=()=>{renderStudy("");show("study");$("search").value="";};
+function renderStudy(f){
+  f=f.trim().toLowerCase();const box=$("studyList");box.innerHTML="";
+  Q.forEach((q,id)=>{if(!f||(q.q+" "+q.o.join(" ")).toLowerCase().includes(f))box.appendChild(item(id))});
+}
+$("search").oninput=e=>renderStudy(e.target.value);
+
+document.addEventListener("keydown",e=>{
+  if($("quiz").classList.contains("hidden")||e.target.tagName==="INPUT")return;
+  const n=+e.key;
+  if(n>=1&&n<=run.perm.length){toggle(run.perm[n-1]);e.preventDefault()}
+  else if(e.key==="Enter"&&!$("check").disabled){e.preventDefault();$("check").click()}
+});
+
+// theme
+const root=document.documentElement;
+let th=store.get("anat1.theme",null);if(th)root.dataset.theme=th;
+$("theme").onclick=()=>{
+  const dark=root.dataset.theme?root.dataset.theme==="dark":matchMedia("(prefers-color-scheme:dark)").matches;
+  th=dark?"light":"dark";root.dataset.theme=th;store.set("anat1.theme",th);
+};
+renderStart();
+</script>
+</body>
+</html>
